@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import {useState, useEffect} from 'react'
 import './App.css';
 
 function App() {
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    const getStarWarsCharacters = async () => {
+      const response = await fetch('https://swapi.dev/api/people/10', {method: 'GET', mode: 'no-cors' })
+      // const character = await response.json()
+      console.log(response)
+    }
+    getStarWarsCharacters();
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }
